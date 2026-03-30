@@ -1,0 +1,2791 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>远致集团 | 工业烟气治理领航者</title>
+<style>
+    * {
+        margin: 100;
+        padding: 0;
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", sans-serif;
+        background: #ffffff;
+        color: #1d1d1f;
+        line-height: 1.5;
+        scroll-behavior: smooth;
+        font-size: 14px;
+    }
+
+    /* ========== 侧边栏 ========== */
+    .sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 140px;
+        background: rgba(255, 255, 255, 0.96);
+        backdrop-filter: blur(20px);
+        border-right: 0.5px solid rgba(0, 0, 0, 0.05);
+        z-index: 100;
+        padding: 48px 0 40px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow-y: auto;
+    }
+
+    .logo {
+        font-size: 20px;
+        font-weight: 600;
+        letter-spacing: -0.3px;
+        margin-bottom: 48px;
+        text-decoration: none;
+        color: #0066cc;
+        text-align: center;
+    }
+
+    .nav-link {
+        display: block;
+        font-size: 12px;
+        font-weight: 500;
+        color: #8e8e93;
+        text-decoration: none;
+        padding: 8px 0;
+        text-align: center;
+        transition: all 0.2s;
+        width: 100%;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+        color: #0066cc;
+        font-weight: 600;
+    }
+
+    /* ========== 主内容 ========== */
+    .main-content {
+        margin-left: 100px;
+        position: relative;
+    }
+
+    /* 背景图片层 */
+    .main-content::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+        z-index: 0;
+        background:
+            /* 碧浪背景 - 后2/3 (从35%开始渐显) */
+            linear-gradient(to bottom,
+                rgba(255,255,255,1) 0%,
+                rgba(255,255,255,1) 10%,
+                rgba(255,255,255,0.95) 100%,
+                rgba(240,248,255,0.7) 20%,
+                rgba(230,245,255,0.5) 45%,
+                rgba(220,240,255,0.3) 100%
+            ),
+            url('slides-images/背景 碧浪.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    /* 老鹰背景 - 前1/3 */
+    .hero-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 45vh;
+        pointer-events: none;
+        z-index: -1;
+        background:
+            /* 蓝色遮罩融合 */
+            linear-gradient(135deg,
+                rgba(0, 102, 204, 0.15) 0%,
+                rgba(0, 102, 204, 0.05) 50%,
+                rgba(255,255,255,0) 100%
+            ),
+            /* 渐变过渡到白色 */
+            linear-gradient(to bottom,
+                rgba(255,255,255,0) 0%,
+                rgba(255,255,255,0.3) 60%,
+                rgba(255,255,255,0.9) 90%,
+                rgba(255,255,255,1) 100%
+            ),
+            url('slides-images/老鹰.png');
+        background-size: cover;
+        background-position: center 30%;
+        background-repeat: no-repeat;
+    }
+
+    /* 过渡渐变层 */
+    .bg-transition {
+        position: absolute;
+        top: 35vh;
+        left: 0;
+        right: 0;
+        height: 20vh;
+        pointer-events: none;
+        z-index: 0;
+        background: linear-gradient(to bottom,
+            rgba(255,255,255,1) 0%,
+            rgba(255,255,255,0.9) 20%,
+            rgba(240,248,255,0.5) 60%,
+            rgba(230,245,255,0.3) 100%
+        );
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+        padding: 50px 10% 0px;
+        text-align: center;
+        background: transparent;
+        position: relative;
+        z-index: 1;
+    }
+
+    .hero-title {
+        font-size: 60px;
+        font-weight: 700;
+        letter-spacing: -1.5px;
+        color: #0066cc;
+        margin-bottom: 0px;
+    }
+
+    .hero-sub {
+        font-size: 15px;
+        font-weight: 500;
+        color: #0066cc;
+        margin-bottom: 24px;
+    }
+
+    .hero-tagline {
+        font-size: 15px;
+        color: #5e5e66;
+        max-width: 500px;
+        margin: 0 auto 32px;
+    }
+
+    .hero-tagline p {
+        margin-bottom: 8px;
+    }
+
+    /* 董事长致辞卡片 */
+    .speech-card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        border-radius: 15px;
+        padding: 10px 10px;
+        max-width: 900px;
+        margin: 24px auto 0;
+        cursor: pointer;
+        transition: all 0.2s;
+        text-align: center;
+        box-shadow: 0 4px 20px rgba(0, 102, 204, 0.06);
+    }
+
+    .speech-card:hover {
+        border-color: #0066cc;
+        box-shadow: 0 8px 30px rgba(0, 102, 204, 0.12);
+    }
+
+    .speech-card .speech-card-title {
+        font-weight: 600;
+        color: #0066cc;
+        margin-bottom: 8px;
+        font-size: 16px;
+    }
+
+    .speech-card .speech-card-preview {
+        font-size: 13px;
+        color: #8e8e93;
+        line-height: 1.5;
+    }
+
+    .speech-card .speech-card-footer {
+        margin-top: 12px;
+        font-size: 10px;
+        color: #0066cc;
+        position: relative;
+    }
+
+    /* 签名图片 */
+    .signature-img {
+        position: absolute;
+        right: -10px;
+        bottom: -15px;
+        width: 80px;
+        height: auto;
+        opacity: 0.7;
+        mix-blend-mode: multiply;
+        filter: contrast(1.2) brightness(1.1);
+    }
+
+    /* 滚动卡片轮播 */
+    .carousel-container {
+        margin: 20px auto 20px;
+        max-width: 1000px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .carousel-track {
+        display: flex;
+        transition: transform 0.5s ease;
+        gap: 15px;
+    }
+
+    .carousel-card {
+        flex: 0 0 calc(33.333% - 14px);
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        box-shadow: 0 4px 16px rgba(0, 102, 204, 0.05);
+    }
+
+    .carousel-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 32px rgba(0, 102, 204, 0.12);
+        background: rgba(255, 255, 255, 0.98);
+    }
+
+    .carousel-card .card-title {
+        font-size: 16px;
+        font-weight: 700;
+        color: #0066cc;
+        margin-bottom: 10px;
+    }
+
+    .carousel-card .card-desc {
+        font-size: 12px;
+        color: #5e5e66;
+        line-height: 1.4;
+        margin-bottom: 12px;
+    }
+
+    .carousel-card .card-link {
+        font-size: 11px;
+        font-weight: 500;
+        color: #0066cc;
+        text-decoration: none;
+    }
+
+    .carousel-dots {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 20px;
+    }
+
+    .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #d9d9d9;
+        cursor: pointer;
+    }
+
+    .dot.active {
+        width: 20px;
+        border-radius: 4px;
+        background: #0066cc;
+    }
+
+    /* ========== 通用模块 ========== */
+    .section {
+        padding: 80px 8%;
+        border-bottom: 1px solid rgba(240, 248, 255, 0.5);
+        position: relative;
+        z-index: 1;
+        background: linear-gradient(to bottom,
+            rgba(255,255,255,0.7) 0%,
+            rgba(245,250,255,0.85) 100%
+        );
+    }
+
+    .section-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #0066cc;
+        margin-bottom: 16px;
+        text-align: center;
+    }
+
+    .section-subtitle {
+        font-size: 16px;
+        color: #8e8e93;
+        text-align: center;
+        margin-bottom: 56px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.7;
+    }
+
+    .section-intro {
+        font-size: 16px;
+        color: #5e5e66;
+        line-height: 1.9;
+        max-width: 900px;
+        margin: 0 auto 48px;
+        text-align: justify;
+    }
+
+    .section-intro p {
+        margin-bottom: 20px;
+        text-indent: 2em;
+    }
+
+    /* 卡片网格 */
+    .card-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .card-grid-2 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .card-grid-4 {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    /* 信息卡片 */
+    .info-card {
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 32px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        box-shadow: 0 4px 20px rgba(0, 102, 204, 0.06);
+    }
+
+    .info-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+        border-color: #0066cc;
+    }
+
+    .info-card-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: #0066cc;
+        margin-bottom: 12px;
+    }
+
+    .info-card-desc {
+        font-size: 14px;
+        color: #5e5e66;
+        line-height: 1.7;
+    }
+
+    .info-card .card-arrow {
+        margin-top: 20px;
+        font-size: 13px;
+        font-weight: 600;
+        color: #0066cc;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        opacity: 0.7;
+        transition: all 0.2s ease;
+    }
+
+    .info-card:hover .card-arrow {
+        opacity: 1;
+        transform: translateX(4px);
+    }
+
+    /* 特色卡片 */
+    .feature-card {
+        background: linear-gradient(135deg, #0066cc, #0052a3);
+        border-radius: 24px;
+        padding: 40px 32px;
+        color: white;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+        transform: scale(1.02);
+        box-shadow: 0 16px 40px rgba(0, 102, 204, 0.3);
+    }
+
+    .feature-number {
+        font-size: 48px;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .feature-label {
+        font-size: 14px;
+        opacity: 0.9;
+    }
+
+    /* 大数字展示 */
+    .stats-row {
+        display: flex;
+        justify-content: center;
+        gap: 64px;
+        margin: 48px 0;
+        flex-wrap: wrap;
+    }
+
+    .stat-item {
+        text-align: center;
+    }
+
+    .stat-value {
+        font-size: 56px;
+        font-weight: 700;
+        color: #0066cc;
+        line-height: 1;
+    }
+
+    .stat-unit {
+        font-size: 24px;
+        color: #5e5e66;
+    }
+
+    .stat-desc {
+        font-size: 14px;
+        color: #8e8e93;
+        margin-top: 8px;
+    }
+
+    /* 垂直时间轴 */
+    .timeline-vertical {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+        padding-left: 40px;
+    }
+
+    .timeline-vertical::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: linear-gradient(180deg, #0066cc, #0052a3);
+        border-radius: 2px;
+    }
+
+    .timeline-item-v {
+        position: relative;
+        margin-bottom: 48px;
+        padding-left: 32px;
+    }
+
+    .timeline-item-v::before {
+        content: '';
+        position: absolute;
+        left: -44px;
+        top: 0;
+        width: 20px;
+        height: 20px;
+        background: #0066cc;
+        border-radius: 50%;
+        border: 4px solid white;
+        box-shadow: 0 0 0 4px #0066cc;
+    }
+
+    .timeline-year-v {
+        font-size: 28px;
+        font-weight: 700;
+        color: #0066cc;
+        margin-bottom: 8px;
+    }
+
+    .timeline-title-v {
+        font-size: 18px;
+        font-weight: 600;
+        color: #1d1d1f;
+        margin-bottom: 8px;
+    }
+
+    .timeline-desc-v {
+        font-size: 14px;
+        color: #5e5e66;
+        line-height: 1.7;
+    }
+
+    /* 两栏布局 */
+    .two-col {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    /* 组织架构树 */
+    .org-tree {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .org-root {
+        background: linear-gradient(135deg, #0066cc, #0052a3);
+        color: white;
+        padding: 24px 40px;
+        border-radius: 16px;
+        text-align: center;
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 32px;
+    }
+
+    .org-branches {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+    }
+
+    .org-branch {
+        background: white;
+        border: 2px solid #f0f0f0;
+        border-radius: 20px;
+        padding: 28px;
+        transition: all 0.3s ease;
+    }
+
+    .org-branch:hover {
+        border-color: #0066cc;
+        box-shadow: 0 8px 24px rgba(0, 102, 204, 0.1);
+    }
+
+    .org-branch-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: #0066cc;
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 2px solid #f0f0f0;
+    }
+
+    .org-sub-item {
+        padding: 10px 0;
+        border-bottom: 1px dashed #e8e8ed;
+        font-size: 14px;
+        color: #5e5e66;
+    }
+
+    .org-sub-item:last-child {
+        border-bottom: none;
+    }
+
+    /* 专家团队 */
+    .expert-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 56px;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .expert-row {
+        display: flex;
+        gap: 48px;
+        flex-wrap: wrap;
+        align-items: flex-start;
+    }
+
+    .expert-info {
+        flex: 2;
+    }
+
+    .expert-name {
+        font-size: 26px;
+        font-weight: 700;
+        color: #0066cc;
+        margin-bottom: 8px;
+    }
+
+    .expert-title {
+        font-size: 14px;
+        font-weight: 500;
+        color: #5e5e66;
+        margin-bottom: 20px;
+    }
+
+    .honor-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 20px 0;
+    }
+
+    .honor-badge {
+        background: #f0f0f0;
+        padding: 4px 12px;
+        border-radius: 30px;
+        font-size: 11px;
+        font-weight: 500;
+        color: #5e5e66;
+    }
+
+    .expert-bio {
+        font-size: 13px;
+        color: #5e5e66;
+        line-height: 1.6;
+    }
+
+    .expert-img {
+        width: 180px;
+        aspect-ratio: 3/4;
+        background: #f0f0f0;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        color: #8e8e93;
+        border: 1px solid #e8e8ed;
+    }
+
+    /* 科研设备展示 */
+    .rd-showcase {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .rd-item {
+        background: white;
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+    }
+
+    .rd-item:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+    }
+
+    .rd-visual {
+        height: 200px;
+        background: linear-gradient(135deg, #0066cc, #0052a3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 64px;
+    }
+
+    .rd-content {
+        padding: 24px;
+    }
+
+    .rd-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: #0066cc;
+        margin-bottom: 8px;
+    }
+
+    .rd-desc {
+        font-size: 14px;
+        color: #5e5e66;
+    }
+
+    /* 荣誉墙 */
+    .honor-wall {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        justify-content: center;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .honor-item {
+        background: white;
+        border: 1px solid #f0f0f0;
+        border-radius: 16px;
+        padding: 24px 32px;
+        text-align: center;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .honor-item:hover {
+        border-color: #0066cc;
+        box-shadow: 0 8px 24px rgba(0, 102, 204, 0.1);
+        transform: translateY(-4px);
+    }
+
+    .honor-icon {
+        font-size: 40px;
+        margin-bottom: 12px;
+    }
+
+    .honor-title {
+        font-size: 15px;
+        font-weight: 600;
+        color: #1d1d1f;
+        margin-bottom: 4px;
+    }
+
+    .honor-year {
+        font-size: 13px;
+        color: #8e8e93;
+    }
+
+    /* 分屏布局 */
+    .split-screen {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+        max-width: 1400px;
+        margin: 0 auto;
+        border-radius: 24px;
+        overflow: hidden;
+    }
+
+    .split-left {
+        background: linear-gradient(135deg, #0066cc, #0052a3);
+        color: white;
+        padding: 48px;
+    }
+
+    .split-right {
+        background: white;
+        padding: 48px;
+    }
+
+    .split-title {
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 24px;
+    }
+
+    .split-content {
+        font-size: 15px;
+        line-height: 1.8;
+    }
+
+    /* 服务标签 */
+    .service-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        margin-top: 32px;
+    }
+
+    .service-tag-lg {
+        background: rgba(255, 255, 255, 0.15);
+        padding: 16px;
+        border-radius: 12px;
+        text-align: center;
+        font-weight: 600;
+        transition: all 0.2s ease;
+    }
+
+    .service-tag-lg:hover {
+        background: rgba(255, 255, 255, 0.25);
+        transform: scale(1.05);
+    }
+
+    /* 流程步骤 */
+    .process-flow {
+        display: flex;
+        justify-content: space-between;
+        max-width: 1000px;
+        margin: 48px auto;
+        position: relative;
+    }
+
+    .process-flow::before {
+        content: '';
+        position: absolute;
+        top: 40px;
+        left: 10%;
+        right: 10%;
+        height: 2px;
+        background: linear-gradient(90deg, #0066cc, #0052a3);
+    }
+
+    .process-step {
+        text-align: center;
+        position: relative;
+        z-index: 1;
+        flex: 1;
+    }
+
+    .step-num {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, #0066cc, #0052a3);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        font-weight: 700;
+        margin: 0 auto 16px;
+        border: 4px solid white;
+        box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
+    }
+
+    .step-title {
+        font-size: 15px;
+        font-weight: 600;
+        color: #1d1d1f;
+    }
+
+    /* 技术亮点 */
+    .tech-highlight {
+        background: linear-gradient(135deg, #f8fafd, #f0f4fa);
+        border-radius: 24px;
+        padding: 40px;
+        margin: 32px 0;
+    }
+
+    .tech-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+    .tech-point {
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+    }
+
+    .tech-icon {
+        width: 48px;
+        height: 48px;
+        background: linear-gradient(135deg, #0066cc, #0052a3);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 700;
+        flex-shrink: 0;
+        font-size: 18px;
+    }
+
+    /* 产品展示 */
+    .product-showcase {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+    }
+
+    .product-card {
+        background: white;
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        border: 1px solid #f0f0f0;
+    }
+
+    .product-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 48px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-header {
+        height: 8px;
+        background: #0066cc;
+    }
+
+    .product-body {
+        padding: 28px;
+    }
+
+    .product-name {
+        font-size: 18px;
+        font-weight: 700;
+        color: #0066cc;
+        margin-bottom: 12px;
+    }
+
+    .product-features {
+        font-size: 14px;
+        color: #5e5e66;
+        line-height: 1.7;
+    }
+
+    /* 项目卡片 */
+    .project-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .project-item {
+        background: white;
+        border-radius: 20px;
+        padding: 28px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: 1px solid #f0f0f0;
+    }
+
+    .project-item:hover {
+        border-color: #0066cc;
+        box-shadow: 0 12px 32px rgba(0, 102, 204, 0.1);
+    }
+
+    .project-name {
+        font-size: 18px;
+        font-weight: 700;
+        color: #0066cc;
+        margin-bottom: 8px;
+    }
+
+    .project-meta {
+        font-size: 13px;
+        color: #8e8e93;
+        margin-bottom: 12px;
+    }
+
+    .project-highlight {
+        font-size: 14px;
+        color: #5e5e66;
+        line-height: 1.6;
+    }
+
+    /* 对比卡片 */
+    .compare-section {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .compare-card {
+        background: white;
+        border-radius: 24px;
+        padding: 32px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    }
+
+    .compare-card.highlight {
+        background: linear-gradient(135deg, #0066cc, #0052a3);
+        color: white;
+    }
+
+    .compare-title {
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+
+    .compare-list {
+        list-style: none;
+    }
+
+    .compare-list li {
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        font-size: 14px;
+    }
+
+    .compare-card.highlight .compare-list li {
+        border-bottom-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* 子公司网格 */
+    .subsidiary-map {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+    }
+
+    .subsidiary-card {
+        background: white;
+        border-radius: 20px;
+        padding: 28px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+        border: 1px solid #f0f0f0;
+        transition: all 0.3s ease;
+    }
+
+    .subsidiary-card:hover {
+        border-color: #0066cc;
+        transform: translateY(-4px);
+    }
+
+    .subsidiary-name {
+        font-weight: 700;
+        color: #0066cc;
+        margin-bottom: 8px;
+        font-size: 15px;
+    }
+
+    .subsidiary-type {
+        font-size: 13px;
+        color: #8e8e93;
+        margin-bottom: 12px;
+    }
+
+    .subsidiary-info {
+        font-size: 12px;
+        color: #5e5e66;
+        line-height: 1.7;
+    }
+
+    /* 联系方式 */
+    .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .contact-card {
+        background: white;
+        border-radius: 20px;
+        padding: 28px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    }
+
+    .contact-company {
+        font-size: 16px;
+        font-weight: 700;
+        color: #0066cc;
+        margin-bottom: 12px;
+    }
+
+    .contact-detail {
+        font-size: 14px;
+        color: #5e5e66;
+        line-height: 1.8;
+    }
+
+    /* 底部 */
+    footer {
+        padding: 48px 10%;
+        background: #1d1d1f;
+        text-align: center;
+        font-size: 13px;
+        color: #8e8e93;
+    }
+
+    footer p {
+        margin-bottom: 8px;
+    }
+
+    /* ========== 模态框 ========== */
+    .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(1px);
+        z-index: 2000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+        padding: 24px;
+    }
+
+    .modal-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+        .modal-card {
+        background: #ffffff;
+        border-radius: 32px;
+        max-width: 900px;
+        width: 100%;
+        max-height: 85vh;
+        overflow-y: auto;
+        padding: 40px 20px 40px 48px;
+        transform: scale(0.9);
+        transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1);
+        box-shadow: 0 32px 64px rgba(0, 0, 0, 0.3);
+        scrollbar-width: thin;
+        scrollbar-color: rgba(0, 102, 204, 0.3) transparent;
+    }
+
+    .modal-card::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .modal-card::-webkit-scrollbar-track {
+        background: transparent;
+        margin: 28px 4px 28px 0;
+    }
+
+    .modal-card::-webkit-scrollbar-thumb {
+        background: rgba(0, 102, 204, 0.3);
+        border-radius: 10px;
+        border: 2px solid transparent;
+        background-clip: padding-box;
+    }
+
+    .modal-card::-webkit-scrollbar-thumb:hover {
+        background: rgba(0, 102, 204, 0.5);
+        border: 2px solid transparent;
+        background-clip: padding-box;
+    }
+
+    .modal-overlay.active .modal-card {
+        transform: scale(1);
+    }
+
+    .modal-card-title {
+        font-size: 28px;
+        font-weight: 700;
+        color: #0066cc;
+        margin-bottom: 24px;
+        padding-bottom: 16px;
+        border-bottom: 3px solid #0066cc;
+    }
+
+    .modal-card-content {
+        font-size: 15px;
+        line-height: 1.8;
+        color: #5e5e66;
+        padding-right: 20px;
+    }
+
+    .close-modal-btn {
+        position: sticky;
+        top: 0;
+        float: right;
+        background: #f5f5f7;
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        font-size: 20px;
+        cursor: pointer;
+        color: #8e8e93;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 16px;
+    }
+
+    .close-modal-btn:hover {
+        background: #e8e8ed;
+        color: #1d1d1f;
+        transform: scale(1.05);
+    }
+
+    /* 数据表格样式 */
+    .data-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 13px;
+    }
+
+    .data-table th,
+    .data-table td {
+        border: 1px solid #e0e0e0;
+        padding: 10px 14px;
+        text-align: left;
+    }
+
+    .data-table th {
+        background: #f5f5f7;
+        font-weight: 600;
+        color: #0066cc;
+    }
+
+    .data-table tr:nth-child(even) {
+        background: #f9f9fb;
+    }
+
+    .data-table tr:hover {
+        background: #eef2f8;
+    }
+
+    /* 详情列表 */
+    .detail-list {
+        list-style: none;
+        margin: 16px 0;
+    }
+
+    .detail-list li {
+        padding: 12px 0;
+        border-bottom: 1px solid #f0f0f0;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .detail-list li:last-child {
+        border-bottom: none;
+    }
+
+    .detail-label {
+        font-weight: 600;
+        color: #1d1d1f;
+    }
+
+    .detail-value {
+        color: #0066cc;
+        font-weight: 500;
+    }
+
+    /* 响应式 */
+    @media (max-width: 900px) {
+        .sidebar {
+            transform: translateX(-100%);
+        }
+
+        .main-content {
+            margin-left: 0;
+        }
+
+        .hero-title {
+            font-size: 42px;
+        }
+
+        .card-grid,
+        .card-grid-2,
+        .card-grid-4,
+        .two-col,
+        .product-showcase,
+        .project-list,
+        .compare-section,
+        .subsidiary-map,
+        .contact-grid,
+        .service-grid,
+        .tech-grid,
+        .org-branches,
+        .rd-showcase {
+            grid-template-columns: 1fr;
+        }
+
+        .stats-row {
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .split-screen {
+            grid-template-columns: 1fr;
+        }
+
+        .process-flow {
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .process-flow::before {
+            display: none;
+        }
+
+        .expert-card {
+            flex: 0 0 300px;
+        }
+
+                .modal-card {
+            padding: 24px 16px 24px 24px;
+            margin: 16px;
+        }
+
+        .modal-card-content {
+            padding-right: 8px;
+        }
+
+        /* 发展历程移动端适配 */
+        #timeline > div[style*="position: relative"] {
+            min-height: auto !important;
+        }
+        #timeline > div[style*="position: relative"] > div:first-child {
+            position: relative !important;
+            width: 100% !important;
+            height: 150px !important;
+            opacity: 0.3 !important;
+        }
+        #timeline > div[style*="position: relative"] > div:last-child {
+            margin-left: 0 !important;
+            background: rgba(255, 255, 255, 0.95) !important;
+        }
+    }
+</style>
+
+</head>
+<body>
+
+<aside class="sidebar">
+    <a href="#" class="logo">远致集团</a>
+    <nav>
+        <a href="#hero" class="nav-link active">首页</a>
+        <a href="#about" class="nav-link">企业介绍</a>
+        <a href="#timeline" class="nav-link">发展历程</a>
+        <a href="#org" class="nav-link">公司架构</a>
+        <a href="#strength" class="nav-link">综合实力</a>
+        <a href="#team" class="nav-link">专家团队</a>
+        <a href="#rd" class="nav-link">科研实力</a>
+        <a href="#honor" class="nav-link">荣誉资质</a>
+        <a href="#business" class="nav-link">主营业务</a>
+        <a href="#operation" class="nav-link">运营业务</a>
+        <a href="#engineering" class="nav-link">设计工程</a>
+        <a href="#tech" class="nav-link">核心技术</a>
+        <a href="#products" class="nav-link">核心产品</a>
+        <a href="#projects" class="nav-link">项目案例</a>
+        <a href="#platform" class="nav-link">新材料平台</a>
+        <a href="#subsidiaries" class="nav-link">子公司</a>
+        <a href="#contact" class="nav-link">联系方式</a>
+    </nav>
+</aside>
+
+<main class="main-content">
+    <!-- 老鹰背景 - 前1/3 -->
+    <div class="hero-bg"></div>
+    <!-- 过渡渐变层 -->
+    <div class="bg-transition"></div>
+
+    <!-- HERO 区域 -->
+    <div id="hero" class="hero">
+        <h1 class="hero-title">远致集团</h1>
+        <p class="hero-sub">ZEST</p>
+        <div class="hero-tagline">
+            <p>高温烟气治理一体化技术的 领航者</p>
+            <p>实现环保与节能有机统一的 实践者</p>
+        </div>
+
+        <!-- 董事长致辞卡片 -->
+        <div class="speech-card" onclick="openSpeechModal()">
+            <div class="speech-card-title">董事长致辞</div>
+            <div class="speech-card-preview">"持续创新共享，改善人类呼吸命运共同体"是远致集团承载的第一社会责任。</div>
+            <div class="speech-card-footer">
+                罗祥波 · 董事长 →
+                <img src="slides-images/签字.png" alt="签名" class="signature-img">
+            </div>
+        </div>
+
+        <!-- 滚动卡片轮播 -->
+        <div class="carousel-container">
+            <div class="carousel-track" id="carouselTrack">
+                <div class="carousel-card" onclick="showDetail('tech')">
+                    <div class="card-title">高温低尘SCR脱硝一体化技术</div>
+                    <div class="card-desc">首创高温低尘工艺，催化剂用量降低60%，入选国家先进污染防治技术目录</div>
+                    <span class="card-link">了解详情 →</span>
+                </div>
+                <div class="carousel-card" onclick="showDetail('xinmo')">
+                    <div class="card-title">鑫膜®类高熵金属滤袋</div>
+                    <div class="card-desc">孔径＜1μm，透气量提升30%，残余阻力降低50%，使用温度800℃</div>
+                    <span class="card-link">了解详情 →</span>
+                </div>
+                <div class="carousel-card" onclick="showDetail('honor')">
+                    <div class="card-title">科技发展最佳贡献奖</div>
+                    <div class="card-desc">2021年水泥行业科技发展最佳贡献奖、全国建材机械行业科技二等奖</div>
+                    <span class="card-link">了解详情 →</span>
+                </div>
+                <div class="carousel-card" onclick="showDetail('angels')">
+                    <div class="card-title">安及赛®节能减碳滤料</div>
+                    <div class="card-desc">运行阻力降低20-50%，节能效果显著，实现超低排放与节能双赢</div>
+                    <span class="card-link">了解详情 →</span>
+                </div>
+                <div class="carousel-card" onclick="showDetail('project')">
+                    <div class="card-title">河南某水泥项目</div>
+                    <div class="card-desc">首台套应用，稳定运行五年，氨水耗量降低80%，系统阻力小于800Pa</div>
+                    <span class="card-link">了解详情 →</span>
+                </div>
+            </div>
+            <div class="carousel-dots" id="carouselDots"></div>
+        </div>
+    </div>
+
+    <!-- 企业介绍 -->
+    <section id="about" class="section">
+        <h2 class="section-title">企业介绍</h2>
+        <div class="section-intro">
+            <p>远致集团始创于2016年，是国家级高新技术企业，定位于工业烟气环境综合治理。截至2021年底，公司下辖控股参股子公司8家。远致集团致力于提供烟尘治理技术及核心材料的解决方案和环保保障，以极具前瞻性的技术突破引领高温烟气治理产业的发展。在能源环保一体化的背景下，形成了方案设计、工程建设、新材料技术研发和降碳节能环保一体化技术推广全产业链覆盖的发展布局。</p>
+            <p>以"创新共享，行以致远"为核心价值观，依托"技术+创新+产业"协同发展模式，不断向产业链上下游延伸。远致集团，致力于成为掌握核心技术的国际知名节能环保企业。通过将节能、创新技术、新材料应用于环保解决方案中，为持续促进工业窑炉节能减排，推动行业高质量发展，帮助终端用户解决问题，创造价值贡献力量。</p>
+        </div>
+
+        <div class="stats-row">
+            <div class="stat-item">
+                <div class="stat-value">127</div>
+                <div class="stat-desc">申请专利技术</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">93</div>
+                <div class="stat-desc">已授权专利</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">8</div>
+                <div class="stat-desc">控股子公司</div>
+            </div>
+        </div>
+
+        <div class="card-grid" style="margin-top: 48px;">
+            <div class="info-card" onclick="showDetail('mission')">
+                <div class="info-card-title">企业使命</div>
+                <div class="info-card-desc">用核心材料技术推动技术革新，实现节能与环保的有机统一，解决环保问题的同时为客户创造价值。</div>
+                <div class="card-arrow">查看详情 →</div>
+            </div>
+            <div class="info-card" onclick="showDetail('vision')">
+                <div class="info-card-title"> 企业愿景</div>
+                <div class="info-card-desc">致力于成为掌握核心技术的国际知名节能环保企业。</div>
+                <div class="card-arrow">查看详情 →</div>
+            </div>
+            <div class="info-card" onclick="showDetail('values')">
+                <div class="info-card-title"> 核心价值观</div>
+                <div class="info-card-desc">创新共享 · 行以致远</div>
+                <div class="card-arrow">查看详情 →</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 发展历程 - 垂直时间轴 -->
+    <section id="timeline" class="section" style="background: linear-gradient(180deg, #f8fafd 0%, #ffffff 100%); padding: 32px 0; position: relative; overflow: hidden;">
+        <h2 class="section-title" style="margin-bottom: 12px; font-size: 24px;">发展历程</h2>
+        <div class="section-subtitle" style="margin-bottom: 16px; font-size: 13px;">从2016年创立至今，远致集团始终坚持技术创新</div>
+
+        <div style="position: relative; max-width: 1000px; margin: 0 auto; min-height: 200px;">
+            <!-- 背景图片（左侧） -->
+            <div style="position: absolute; left: 0; top: 0; width: 50%; height: 100%; z-index: 0;">
+                <img src="slides-images/图片2.png" alt="工业烟气治理" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.6;">
+            </div>
+
+            <!-- 时间轴内容（右侧） -->
+            <div style="position: relative; z-index: 1; margin-left: 45%; padding: 16px 24px; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(4px); border-radius: 16px;">
+                <div class="timeline-vertical" style="gap: 8px;">
+                    <div class="timeline-item-v" style="padding: 6px 0; margin-bottom: 0;">
+                        <div class="timeline-year-v" style="margin-bottom: 2px; font-size: 20px;">2016</div>
+                        <div class="timeline-title-v" style="margin-bottom: 2px; font-size: 14px;">初创启航</div>
+                        <div class="timeline-desc-v" style="line-height: 1.4; font-size: 12px;">远致集团正式成立，定位为工业烟气环境综合治理的国家级高新技术企业。</div>
+                    </div>
+                    <div class="timeline-item-v" style="padding: 6px 0; margin-bottom: 0;">
+                        <div class="timeline-year-v" style="margin-bottom: 2px; font-size: 20px;">2019</div>
+                        <div class="timeline-title-v" style="margin-bottom: 2px; font-size: 14px;">科研驱动</div>
+                        <div class="timeline-desc-v" style="line-height: 1.4; font-size: 12px;">成立研究院，与武汉理工大学合作，研发出"高温低尘SCR脱硝一体化技术"。</div>
+                    </div>
+                    <div class="timeline-item-v" style="padding: 6px 0; margin-bottom: 0;">
+                        <div class="timeline-year-v" style="margin-bottom: 2px; font-size: 20px;">2021</div>
+                        <div class="timeline-title-v" style="margin-bottom: 2px; font-size: 14px;">产业升级</div>
+                        <div class="timeline-desc-v" style="line-height: 1.4; font-size: 12px;">技术入选国家目录，荣获建筑材料科学技术奖、水泥行业科技发展最佳贡献奖。</div>
+                    </div>
+                    <div class="timeline-item-v" style="padding: 6px 0; margin-bottom: 0;">
+                        <div class="timeline-year-v" style="margin-bottom: 2px; font-size: 20px;">2023</div>
+                        <div class="timeline-title-v" style="margin-bottom: 2px; font-size: 14px;">战略扩张</div>
+                        <div class="timeline-desc-v" style="line-height: 1.4; font-size: 12px;">布局新能源、水泥、玻璃等领域，入选福建省首台（套）重大技术装备目录。</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 公司架构 - 树状图 -->
+    <section id="org" class="section">
+        <h2 class="section-title">公司架构</h2>
+        <div class="section-subtitle">力求实现节能与环保的有机统一，解决环保问题的同时为客户创造价值</div>
+
+        <div class="org-tree">
+            <div class="org-root">远致集团</div>
+            <div class="org-branches">
+                <div class="org-branch">
+                    <div class="org-branch-title"> 福建远致环保科技有限公司</div>
+                    <div class="org-sub-item">福建远致环保科技有限公司厦门分公司</div>
+                    <div class="org-sub-item">福建远致环保科技有限公司北京分公司</div>
+                    <div class="org-sub-item">福建远致环保科技有限公司重庆分公司</div>
+                    <div class="org-sub-item">福建远致环保科技有限公司杭州分公司</div>
+                    <div style="margin-top: 16px; padding-top: 16px; border-top: 1px dashed #e8e8ed; font-size: 13px; color: #8e8e93;">
+                        科技公司，为工业窑炉的高温烟气治理（脱硫脱硝除尘等）提供工程建设及核心材料
+                    </div>
+                </div>
+                <div class="org-branch">
+                    <div class="org-branch-title"> 远富新（厦门）节能新材料科技有限公司</div>
+                    <div class="org-sub-item">厦门格锐特环保科技有限公司</div>
+                    <div class="org-sub-item">福建玺富新材料有限公司</div>
+                    <div class="org-sub-item">福建远青新材料科技有限公司</div>
+                    <div class="org-sub-item">鑫膜新材料科技（西安）有限公司</div>
+                    <div style="margin-top: 16px; padding-top: 16px; border-top: 1px dashed #e8e8ed; font-size: 13px; color: #8e8e93;">
+                        平台公司，设计长效科学的激励体系，股权对核心团队及投资人开放
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 综合实力 - 数据可视化 -->
+    <section id="strength" class="section" style="background: linear-gradient(135deg, #f8fafd 0%, #ffffff 100%);">
+        <h2 class="section-title">综合实力</h2>
+        <div class="section-intro">
+            <p>远致集团高度重视技术创新，成立之初便明确了以技术创新驱动发展的战略方向，并成立了远致环保技术研究院。集团注重研发、技术与生产实践相结合，确保新工艺、新技术、新装备、新材料转化为新的生产力。</p>
+            <p>截至2024年中，公司已申请各类专利技术127项，其中已授权专利技术93项。成为烟气治理领域细分行业的技术领军企业。远致集团将依托环保领域沉淀20余年的专业认知和技术创新，同时联合科研院所、高等院校，充分发挥专家团队的智库功能，加大研发投入，打造高水平技术团队，走技术材料装备创新型、低碳节能集约型发展之路，促进中国工业烟气治理行业整体技术水平的提升。</p>
+        </div>
+
+        <div class="card-grid-4" style="margin-top: 48px;">
+            <div class="feature-card">
+                <div class="feature-number">127</div>
+                <div class="feature-label">申请专利技术</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-number">93</div>
+                <div class="feature-label">已授权专利</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-number">20+</div>
+                <div class="feature-label">年行业沉淀</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-number">8</div>
+                <div class="feature-label">控股子公司</div>
+            </div>
+        </div>
+
+        <div class="card-grid" style="margin-top: 32px;">
+            <div class="info-card" onclick="showDetail('leading')">
+                <div class="info-card-title"> 技术领军</div>
+                <div class="info-card-desc">成为烟气治理领域细分行业的技术领军企业，已授权专利技术93项</div>
+            </div>
+            <div class="info-card" onclick="showDetail('innovation')">
+                <div class="info-card-title"> 产学研合作</div>
+                <div class="info-card-desc">联合武汉理工、福州大学、浙江大学等知名院校展开深度合作</div>
+            </div>
+            <div class="info-card" onclick="showDetail('development')">
+                <div class="info-card-title">📈 发展路径</div>
+                <div class="info-card-desc">走技术材料装备创新型、低碳节能集约型发展之路</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 专家团队 -->
+    <section id="team" class="section">
+        <h2 class="section-title">团队实力</h2>
+        <div class="section-subtitle">远致集团成立至今凝聚了行业大批高精技术型及各类型优秀人才。公司核心管理团队精通技术、实业和现代化管理，长期从事环境保护相关细分领域的研发、投资、建设及运营，对烟气治理行业的发展趋势具有前瞻性的战略眼光，在产业架构和布局、市场经营拓展和运营管控等方面拥有丰富经验。</div>
+        <div class="expert-stack">
+            <div class="expert-row">
+                <div class="expert-info">
+                    <div class="expert-name">罗祥波</div>
+                    <div class="expert-title">董事长 · 国内第一家高温滤料上市企业创始人</div>
+                    <div class="honor-list">
+                        <span class="honor-badge">厦门火炬高新区第三届"十佳火炬青年"</span>
+                        <span class="honor-badge">厦门市优秀中国特色社会主义事业建设者</span>
+                        <span class="honor-badge">福建省五四青年奖章标兵</span>
+                        <span class="honor-badge">海西创业英才</span>
+                        <span class="honor-badge">福建省优秀企业家</span>
+                        <span class="honor-badge">国内第一家高温过滤材料上市公司创始人</span>
+                        <span class="honor-badge">国家级荣誉11项</span>
+                        <span class="honor-badge">省级荣誉16项</span>
+                        <span class="honor-badge">市级荣誉12项</span>
+                        <span class="honor-badge">国家生态环境部2014年环保部科学技术奖二等奖</span>
+                        <span class="honor-badge">国家能源局2013年能源软科学研究优秀成果奖</span>
+                        <span class="honor-badge">国家知识产权局2014年度中国优秀专利奖</span>
+                    </div>
+                    <div class="expert-bio">2001年打造三维丝，2016年创立远致集团，深耕环保20余载。</div>
+                </div>
+                <div class="expert-img" style="padding: 0; overflow: hidden; background: linear-gradient(135deg, #f0f4fa 0%, #e8eef5 100%); width: 160px;">
+                    <img src="slides-images/图片4.png" alt="罗祥波董事长" style="width: 100%; height: 100%; object-fit: cover; object-position: 20% 10%; transform: scale(0.9);">
+                </div>
+            </div>
+            <div class="expert-row">
+                <div class="expert-info">
+                    <div class="expert-name">蔡伟龙</div>
+                    <div class="expert-title">首席专家 · 福州大学特聘教授博导 · 国家"万人计划"科技创新领军人才</div>
+                    <div class="honor-list">
+                        <span class="honor-badge">国家科学技术奖评审专家</span>
+                        <span class="honor-badge">全国纺织标委会/环保机械标委会委员</span>
+                        <span class="honor-badge">中国纺织工程学会技术带头人</span>
+                    </div>
+                    <div class="expert-bio">现任福州大学石油化工学院特聘教授博导，专注于超高温过滤材料与SCR催化协同技术，主持开发金属微孔一体化技术。</div>
+                </div>
+                <div class="expert-img">[图片预留]<br>蔡伟龙肖像</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 科研实力 -->
+    <section id="rd" class="section">
+        <h2 class="section-title">科研实力 · 高端检测平台</h2>
+        <div class="section-subtitle">开发自主知识产权成套技术，打通工业烟气治理低碳、节能与环保边界。</div>
+        <div class="card-grid-2">
+            <div class="info-card">
+                <div class="info-card-title">超高温动态VDI测试系统（320℃）</div>
+                <div class="info-card-desc">国内首台超高温烟尘动态过滤效率测试系统</div>
+            </div>
+            <div class="info-card">
+                <div class="info-card-title">二噁英分解+SCR评价系统</div>
+                <div class="info-card-desc">国内首台二噁英分解联合SCR脱硝性能评价系统</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 荣誉资质 -->
+    <section id="honor" class="section">
+        <h2 class="section-title">荣誉资质</h2>
+        <div class="section-subtitle">中国建筑材料联合会、中国硅酸盐学会正式批准公示的2021年度建筑材料科学技术奖获奖项目中，"远致高温低尘SCR脱硝一体化技术"在被评选出的35项技术进步类奖项中，荣获技术进步类二等奖。</div>
+
+        <div class="card-grid-4">
+            <div class="info-card" onclick="showDetail('award1')">
+                <div class="info-card-title">科技发展最佳贡献奖</div>
+                <div class="info-card-desc">2021年水泥行业</div>
+            </div>
+            <div class="info-card" onclick="showDetail('award2')">
+                <div class="info-card-title">技术进步二等奖</div>
+                <div class="info-card-desc">建筑材料科学技术奖</div>
+            </div>
+            <div class="info-card" onclick="showDetail('award3')">
+                <div class="info-card-title">科技进步二等奖</div>
+                <div class="info-card-desc">全国建材机械行业科技奖</div>
+            </div>
+            <div class="honor-item" onclick="showDetail('award4')">
+                <div class="honor-icon"></div>
+                <div class="honor-title">优秀供应商</div>
+                <div class="honor-year">2021年度水泥行业</div>
+            </div>
+            <div class="honor-item">
+                <div class="honor-icon"></div>
+                <div class="honor-title">国家先进污染防治技术</div>
+                <div class="honor-year">2021年入选目录</div>
+            </div>
+            <div class="honor-item">
+                <div class="honor-icon"></div>
+                <div class="honor-title">福建省首台套装备</div>
+                <div class="honor-year">2023年入选目录</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 主营业务 - 分屏对比 -->
+    <section id="business" class="section" style="padding: 10; background: #f8fafd;">
+        <div class="split-screen">
+            <div class="split-left">
+                <div class="split-title">运营业务</div>
+                <div class="split-content">
+                    <p>福建远致环保科技有限公司，是远致集团旗下的工程设计技术服务平台板块，定位于环境综合治理科技型企业，战略布局环境治理和节能低碳。</p>
+                    <p style="margin-top: 16px;">产业构建覆盖工业烟气治理的除尘、脱硫脱硝、环保岛、辅控等领域，涉及研发、技术成果转化、工程设计、市场开发、项目投资、建设、运营、系统诊断及技术服务等环节，实现项目生命周期的全覆盖。</p>
+                    <div class="service-grid">
+                        <div class="service-tag-lg">BOT/BOO</div>
+                        <div class="service-tag-lg">EMC</div>
+                        <div class="service-tag-lg">O&M</div>
+                        <div class="service-tag-lg">ROT/ROO</div>
+                    </div>
+                </div>
+            </div>
+            <div class="split-right">
+                <div class="split-title" style="color: #0066cc;">设计工程服务</div>
+                <div class="split-content">
+                    <p>与武汉理工大学合作成立武汉理工节能环保技术研究中心，研发出国际领先的"高温低尘SCR脱硝一体化技术"烟气治理综合解决方案。</p>
+                    <p style="margin-top: 16px;">在水泥、玻璃、垃圾焚烧发电、生物质发电、钢铁、锂行业、工业硅等领域得到应用，为客户提供多技术集成和低碳节能的综合环保解决方案。</p>
+                    <div style="margin-top: 24px; padding: 16px; background: #f0f4fa; border-radius: 12px;">
+                        <strong style="color: #0066cc;">品牌理念：</strong>服务创造价值 · 专业赢得信任
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 运营业务详情 -->
+    <section id="operation" class="section">
+        <h2 class="section-title">运营业务 · 专业运维服务</h2>
+        <div class="section-intro">
+            <p>福建远致环保科技有限公司，定位于环境综合治理科技型企业，战略布局环境治理和节能低碳。产业构建覆盖工业烟气治理的除尘、脱硫脱硝、环保岛、辅控等领域，涉及研发、技术成果转化、工程设计、市场开发、项目投资、建设、运营、系统诊断及技术服务等环节，实现项目生命周期的全覆盖。</p>
+        </div>
+
+        <h3 style="color: #0066cc; margin: 100px 0 24px; text-align: center; font-size: 22px;">行业领域</h3>
+        <div class="card-grid-4" style="margin-bottom: 40px;">
+            <div class="info-card">
+                <div class="info-card-title">水泥行业</div>
+                <div class="info-card-desc">窑尾除尘、脱硫脱硝系统运维</div>
+            </div>
+            <div class="info-card">
+                <div class="info-card-title">钢铁行业</div>
+                <div class="info-card-desc">烧结、球团、高炉烟气治理</div>
+            </div>
+            <div class="info-card">
+                <div class="info-card-title">焦化行业</div>
+                <div class="info-card-desc">焦炉烟气脱硫脱硝除尘</div>
+            </div>
+            <div class="info-card">
+                <div class="info-card-title">玻璃行业</div>
+                <div class="info-card-desc">玻璃窑炉烟气治理</div>
+            </div>
+            <div class="info-card">
+                <div class="info-card-title">垃圾焚烧</div>
+                <div class="info-card-desc">烟气净化系统运营</div>
+            </div>
+            <div class="info-card">
+                <div class="info-card-title">新能源</div>
+                <div class="info-card-desc">锂电材料生产烟气治理</div>
+            </div>
+            <div class="info-card">
+                <div class="info-card-title">煤化工</div>
+                <div class="info-card-desc">煤气化、煤制油烟气处理</div>
+            </div>
+            <div class="info-card">
+                <div class="info-card-title">有色金属</div>
+                <div class="info-card-desc">氧化铝、铜铅锌钛冶炼</div>
+            </div>
+        </div>
+
+        <div class="two-col" style="margin-top: 40px;">
+            <div class="info-card" onclick="showDetail('operation_management')">
+                <div class="info-card-title">管理团队</div>
+                <div class="info-card-desc">公司运营中心负责对运营业务进行总体管理，下设项目管理部、计划经营部、生产技术部等部门，专业配置齐全。管理团队成员均具有十年以上的环保运营项目管理经验和专业能力。</div>
+                <div class="card-arrow">查看管理详情 →</div>
+            </div>
+            <div class="info-card" onclick="showDetail('operation_safety')">
+                <div class="info-card-title">安健环管理</div>
+                <div class="info-card-desc">公司拥有安全生产许可证，三级安健环管理体系，安全管理职责明晰，体系健全。运营中心和项目部都配有专职安健环管理人员。</div>
+                <div class="card-arrow">查看安全体系 →</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 设计工程服务 -->
+    <section id="engineering" class="section" style="background: linear-gradient(135deg, #f8fafd 0%, #ffffff 100%);">
+        <h2 class="section-title">设计工程服务</h2>
+        <div class="section-intro">
+            <p>福建远致环保科技有限公司，定位于环境综合治理科技型企业，战略布局环境治理和节能低碳。与武汉理工大学合作成立武汉理工节能环保技术研究中心，研发出国际领先的"高温低尘SCR脱硝一体化技术"烟气治理综合解决方案。</p>
+        </div>
+
+        <div class="tech-highlight">
+            <h3 style="color: #0066cc; margin-bottom: 24px; text-align: center;">高温低尘SCR脱硝一体化技术创新优势</h3>
+            <div class="tech-grid">
+                <div class="tech-point">
+                    <div class="tech-icon">1</div>
+                    <div>
+                        <strong>首创高温低尘工艺</strong><br>
+                        <span style="color: #5e5e66;">升级传统高温高尘工艺，首次将传统"高温高尘"SCR脱硝工艺升级为"高温低尘"工艺</span>
+                    </div>
+                </div>
+                <div class="tech-point">
+                    <div class="tech-icon">2</div>
+                    <div>
+                        <strong>金属滤袋寿命8-10年</strong><br>
+                        <span style="color: #5e5e66;">可回收无固废，使用寿命远超传统滤料</span>
+                    </div>
+                </div>
+                <div class="tech-point">
+                    <div class="tech-icon">3</div>
+                    <div>
+                        <strong>催化剂用量降低60%</strong><br>
+                        <span style="color: #5e5e66;">投资节省，固废减少，催化剂使用寿命延长一倍</span>
+                    </div>
+                </div>
+                <div class="tech-point">
+                    <div class="tech-icon">4</div>
+                    <div>
+                        <strong>系统优化设计</strong><br>
+                        <span style="color: #5e5e66;">无需吹灰，占地面积减少53%，使用数量减少43%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-grid" style="margin-top: 32px;">
+            <div class="info-card" onclick="showDetail('scrhonor1')">
+                <div class="info-card-title">📋 入选国家目录</div>
+                <div class="info-card-desc">入选2021年《国家先进污染防治技术目录》，被评为示范技术</div>
+            </div>
+            <div class="info-card" onclick="showDetail('scrhonor2')">
+                <div class="info-card-title">🏅 福建省首台套</div>
+                <div class="info-card-desc">入选《福建省首台（套）重大技术装备推广应用指导目录(2023年)》</div>
+            </div>
+            <div class="info-card" onclick="showDetail('scrhonor3')">
+                <div class="info-card-title">📘 生态环境设备名录</div>
+                <div class="info-card-desc">入选《2023年福建省生态环境治理设备（产品）名录》</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心技术 - 流程步骤 -->
+    <section id="tech" class="section">
+        <h2 class="section-title">高温低尘SCR脱硝一体化技术</h2>
+        <div class="section-subtitle">与武汉理工大学合作研发，国际领先技术，在水泥、玻璃、垃圾焚烧、锂电等领域广泛应用</div>
+
+        <div class="process-flow">
+            <div class="process-step">
+                <div class="step-num">1</div>
+                <div class="step-title">高温除尘</div>
+            </div>
+            <div class="process-step">
+                <div class="step-num">2</div>
+                <div class="step-title">脱硫处理</div>
+            </div>
+            <div class="process-step">
+                <div class="step-num">3</div>
+                <div class="step-title">SCR脱硝</div>
+            </div>
+            <div class="process-step">
+                <div class="step-num">4</div>
+                <div class="step-title">超低排放</div>
+            </div>
+        </div>
+
+        <!-- 技术流程图 -->
+        <div class="tech-flow-image" style="margin: 32px auto; max-width: 1200px; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 32px rgba(0, 102, 204, 0.15);">
+            <img src="slides-images/高温低尘scr.png" alt="高温低尘SCR脱硝一体化技术流程图" style="width: 100%; height: auto; display: block;">
+        </div>
+
+        <div class="card-grid" style="margin-top: 48px;" id="techCards">
+            <div class="info-card" onclick="toggleTechDetail('tech_advantage')" data-type="tech_advantage">
+                <div class="info-card-title"> 系统优势</div>
+                <div class="info-card-desc">金属滤袋使用寿命8-10年，可回收无固废；占地面积减少53%；使用数量减少43%</div>
+                <div class="card-arrow" id="arrow-tech_advantage">查看技术参数 →</div>
+            </div>
+            <div class="info-card" onclick="toggleTechDetail('tech_performance')" data-type="tech_performance">
+                <div class="info-card-title">📊 运行效果</div>
+                <div class="info-card-desc">SCR系统温降小于2℃，系统增加电耗小于2.45kwh/t.cl，综合运行平稳</div>
+                <div class="card-arrow" id="arrow-tech_performance">查看运行数据 →</div>
+            </div>
+            <div class="info-card" onclick="toggleTechDetail('tech_emission')" data-type="tech_emission">
+                <div class="info-card-title"> 排放指标</div>
+                <div class="info-card-desc">出口粉尘浓度＜10mg/Nm³，出口NOx浓度＜50mg/Nm³，氨逃逸＜5mg/Nm³</div>
+                <div class="card-arrow" id="arrow-tech_emission">查看排放数据 →</div>
+            </div>
+        </div>
+
+        <!-- 详情展示区域 -->
+        <div id="techDetailPanel" class="tech-detail-panel" style="display: none; margin-top: 24px; padding: 32px; background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%); border-radius: 16px; box-shadow: 0 4px 20px rgba(0, 102, 204, 0.1); border: 1px solid #e0e8f0;">
+            <div id="techDetailContent"></div>
+        </div>
+    </section>
+
+    <!-- 核心产品 - 产品展示 -->
+    <section id="products" class="section" style="background: linear-gradient(135deg, #f8fafd 0%, #ffffff 100%);">
+        <h2 class="section-title">核心产品系列</h2>
+        <div class="section-subtitle">远致集团通过研发创新和技术升级，创造性的研发出了高效、低阻、易清灰的系列产品</div>
+
+        <div class="product-showcase">
+            <div class="product-card" onclick="showDetail('xinmo')">
+                <div class="product-header"></div>
+                <div class="product-body">
+                    <div class="product-name">鑫膜®类高熵金属滤袋</div>
+                    <div class="product-features">孔径＜1μm，透气量提升30%，使用温度800℃，过滤效率99.999%</div>
+                </div>
+            </div>
+            <div class="product-card" onclick="showDetail('metal_cata')">
+                <div class="product-header"></div>
+                <div class="product-body">
+                    <div class="product-name">鑫膜®金属膜催化滤袋</div>
+                    <div class="product-features">除尘99.999%，脱硝98%以上，温度窗口260~400℃</div>
+                </div>
+            </div>
+            <div class="product-card" onclick="showDetail('angels')">
+                <div class="product-header"></div>
+                <div class="product-body">
+                    <div class="product-name">安及赛®节能减碳滤料</div>
+                    <div class="product-features">运行阻力降低20-50%，节能效果显著</div>
+                </div>
+            </div>
+            <div class="product-card" onclick="showDetail('lvbijing')">
+                <div class="product-header"></div>
+                <div class="product-body">
+                    <div class="product-name">滤必净™催化脱硝滤袋</div>
+                    <div class="product-features">脱硝效率70-90%，二噁英分解97%</div>
+                </div>
+            </div>
+            <div class="product-card" onclick="showDetail('p32')">
+                <div class="product-header"></div>
+                <div class="product-body">
+                    <div class="product-name">P32®全能型滤袋</div>
+                    <div class="product-features">耐化学腐蚀，阻力下降37%，达超净排放</div>
+                </div>
+            </div>
+            <div class="product-card" onclick="showDetail('ceramic')">
+                <div class="product-header"></div>
+                <div class="product-body">
+                    <div class="product-name">陶瓷纤维滤管系列</div>
+                    <div class="product-features">耐温750℃，脱硝效率95%以上，二噁英分解99%</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 项目案例 - 卡片列表 -->
+    <section id="projects" class="section">
+        <h2 class="section-title">标杆项目案例</h2>
+        <div class="section-subtitle">远致集团的技术与产品已在多个行业成功应用，取得了显著的环保和经济效益</div>
+
+        <div class="project-list">
+            <div class="project-item" onclick="showProject('henan')">
+                <div class="project-name">河南某水泥项目</div>
+                <div class="project-meta">2019年11月投运 · 首台套应用</div>
+                <div class="project-highlight">烟气量146000Nm³/h，NOx从1000mg/Nm³降至＜50mg/Nm³，喷氨量降低80%，已稳定运行五年</div>
+            </div>
+            <div class="project-item" onclick="showProject('shanxi')">
+                <div class="project-name">山西某水泥5000吨项目</div>
+                <div class="project-meta">2021年11月投运 · 鑫膜首台套</div>
+                <div class="project-highlight">烟气量380000Nm³/h，粉尘从100g/Nm³降至10mg/Nm³，系统阻力＜800Pa</div>
+            </div>
+            <div class="project-item" onclick="showProject('shandong')">
+                <div class="project-name">山东某锅炉项目</div>
+                <div class="project-meta">2021年10月投运 · 安及赛滤袋</div>
+                <div class="project-highlight">运行压差从700Pa降至400Pa，节电14.3万元/年，CO₂减排188吨/年</div>
+            </div>
+            <div class="project-item" onclick="showProject('xinjiang')">
+                <div class="project-name">新疆某钢铁项目</div>
+                <div class="project-meta">2022年12月投运</div>
+                <div class="project-highlight">换袋前运行压差4901Pa，换袋后3973Pa，引风机电流从14.0A降至10.6A</div>
+            </div>
+            <div class="project-item" onclick="showProject('sichuan')">
+                <div class="project-name">四川某钢厂AOD袋式除尘器</div>
+                <div class="project-meta">2023年12月投运</div>
+                <div class="project-highlight">烟气量320000Nm³/h，入口粉尘300g/Nm³，运行压差从1400Pa降至700Pa</div>
+            </div>
+            <div class="project-item" onclick="showProject('fujian')">
+                <div class="project-name">福建某医疗废物除尘系统</div>
+                <div class="project-meta">2024年1月投运 · P32滤袋</div>
+                <div class="project-highlight">运行阻力下降37%，颗粒物从14.4mg/Nm³降至0.2mg/Nm³，年节省电费20万元</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 新材料平台 - 对比展示 -->
+    <section id="platform" class="section" style="background: linear-gradient(135deg, #f8fafd 0%, #ffffff 100%);">
+        <h2 class="section-title">远富新 · 节能型新材料科技平台</h2>
+        <div class="section-intro">
+            <p>远致集团旗下的远富新节能型新材料平台控股子公司已有4家，是目前国内烟气治理领域新材料技术创新的引领者。集团将以此为核心业务板块，通过材料板块上下游产业不断的延伸布局，进一步发挥协同规模优势，积极推动烟气治理低碳环保产业的持续健康发展。</p>
+        </div>
+
+        <div class="compare-section">
+            <div class="compare-card">
+                <div class="compare-title" style="color: #0066cc;"> 超高温过滤材料</div>
+                <ul class="compare-list">
+                    <li>鑫膜®类高熵多孔金属微纳膜</li>
+                    <li>非对称梯级孔结构设计</li>
+                    <li>透气量提升30%，阻力降低50%</li>
+                    <li>清灰周期延长3-7倍</li>
+                    <li>过滤效率达99.999%</li>
+                    <li>最高使用温度800℃</li>
+                </ul>
+            </div>
+            <div class="compare-card highlight">
+                <div class="compare-title">❄️ 中低温过滤材料</div>
+                <ul class="compare-list">
+                    <li>安及赛®节能减碳滤料系列</li>
+                    <li>滤必净™协同耦合型滤料</li>
+                    <li>P32®全能型滤袋</li>
+                    <li>运行阻力降低20-50%</li>
+                    <li>脱硝效率70-90%</li>
+                    <li>可节能20%-50%</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card-grid" style="margin-top: 40px;">
+            <div class="info-card" onclick="showDetail('xinmo_compare')">
+                <div class="info-card-title">📊 鑫膜®性能对比</div>
+                <div class="info-card-desc">点击查看鑫膜®与其他金属滤料的详细性能对比表</div>
+                <div class="card-arrow">查看对比数据 →</div>
+            </div>
+            <div class="info-card" onclick="showDetail('p32_compare')">
+                <div class="info-card-title">📈 P32®性能对比</div>
+                <div class="info-card-desc">点击查看P32®与常规滤料的性能参数对比</div>
+                <div class="card-arrow">查看对比数据 →</div>
+            </div>
+            <div class="info-card" onclick="showDetail('catalyst_data')">
+                <div class="info-card-title"> SCR催化剂数据</div>
+                <div class="info-card-desc">点击查看SCR催化剂应用数据及中试结果</div>
+                <div class="card-arrow">查看测试数据 →</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 子公司 - 地图式网格 -->
+    <section id="subsidiaries" class="section">
+        <h2 class="section-title">集团子公司</h2>
+        <div class="section-subtitle">远致集团旗下拥有多家子公司，覆盖全国多个省市，服务网络遍布全国各地</div>
+
+        <div class="subsidiary-map">
+            <div class="subsidiary-card">
+                <div class="subsidiary-name">福建远致环保科技有限公司</div>
+                <div class="subsidiary-type">总部 · 厦门/北京/重庆/杭州分公司</div>
+                <div class="subsidiary-info">
+                    地址：福建省厦门市思明区观音山营运中心10号<br>
+                    电话：0592-6086975<br>
+                    网址：www.zestep.com
+                </div>
+            </div>
+            <div class="subsidiary-card">
+                <div class="subsidiary-name">远富新(厦门)节能新材料科技有限公司</div>
+                <div class="subsidiary-type">节能新材料平台</div>
+                <div class="subsidiary-info">
+                    地址：福建省厦门市思明区观音山营运中心10号<br>
+                    网址：www.yuanfuxin.com
+                </div>
+            </div>
+            <div class="subsidiary-card">
+                <div class="subsidiary-name">厦门格锐特环保科技有限公司</div>
+                <div class="subsidiary-type">安及赛®滤料生产基地</div>
+                <div class="subsidiary-info">
+                    地址：福建省厦门市思明区观音山营运中心10<br>
+                    电话：4000-323-828
+                </div>
+            </div>
+            <div class="subsidiary-card">
+                <div class="subsidiary-name">福建玺富新材料有限公司</div>
+                <div class="subsidiary-type">催化材料及陶瓷滤管</div>
+                <div class="subsidiary-info">
+                    地址：杭州市钱塘区6号大街452号2幢<br>
+                    福建省惠安县东桥镇莲塘村888-1号2C
+                </div>
+            </div>
+            <div class="subsidiary-card">
+                <div class="subsidiary-name">福建远青新材料科技有限公司</div>
+                <div class="subsidiary-type">新材料研发</div>
+                <div class="subsidiary-info">
+                    地址：福建省惠安县东桥镇莲塘村888-1号1A
+                </div>
+            </div>
+            <div class="subsidiary-card">
+                <div class="subsidiary-name">鑫膜新材料科技（西安）有限公司</div>
+                <div class="subsidiary-type">鑫膜®金属滤袋生产基地</div>
+                <div class="subsidiary-info">
+                    地址：陕西省西安市临潼区绿色工业园
+                </div>
+            </div>
+        </div>
+
+        <div style="background: linear-gradient(135deg, #0066cc, #0052a3); color: white; padding: 32px; border-radius: 20px; margin-top: 40px; text-align: center;">
+            <h4 style="margin-bottom: 16px; font-size: 18px;"> 全国服务网络</h4>
+            <p style="font-size: 14px; opacity: 0.9;">山东、福建、黑龙江、河北、广东、四川、安徽、河南、山西、上海、江苏、湖南、江西、辽宁、新疆、内蒙古、广西等</p>
+        </div>
+    </section>
+
+    <!-- 联系方式 -->
+    <section id="contact" class="section" style="background: linear-gradient(135deg, #f8fafd 0%, #ffffff 100%);">
+        <h2 class="section-title">联系我们</h2>
+        <div class="section-subtitle">期待与您的合作，共同推动工业烟气治理事业的发展</div>
+
+        
+
+        <div class="two-col" style="margin-top: 40px;">
+            <div style="background: white; padding: 32px; border-radius: 20px; text-align: center; box-shadow: 0 4px 16px rgba(0,0,0,0.05);">
+                <div style="font-weight: 700; color: #0066cc; margin-bottom: 8px; font-size: 16px;">远致环保公众号</div>
+                <div style="font-size: 13px; color: #8e8e93;">扫一扫关注，获取最新资讯</div>
+            </div>
+            <div style="background: white; padding: 32px; border-radius: 20px; text-align: center; box-shadow: 0 4px 16px rgba(0,0,0,0.05);">
+                <div style="font-weight: 700; color: #0066cc; margin-bottom: 8px; font-size: 16px;">远富新公众号</div>
+                <div style="font-size: 13px; color: #8e8e93;">扫一扫关注，了解产品信息</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p style="font-size: 16px; font-weight: 600; color: white; margin-bottom: 12px;">远致集团 · ZEST</p>
+        <p>地址：福建省厦门市湖里区岐山北路223号（厦门中恒基大厦）</p>
+        <p>电话：0592-6086975 | 网址：www.zestep.com</p>
+        <p style="margin-top: 16px; opacity: 0.6;">© 2026 远致集团 · 创新共享 行以致远</p>
+    </footer>
+</main>
+
+<!-- 董事长致辞模态框 -->
+<div id="speechModal" style="position: fixed; inset: 0; background: rgba(0,0,0,0.2); backdrop-filter: blur(1px); z-index: 2000; display: none; align-items: center; justify-content: center; padding: 24px;">
+    <div style="background: white; border-radius: 32px; max-width: 860px; width: 100%; max-height: 85vh; overflow-y: auto; position: relative;">
+        <button onclick="closeSpeechModal()" style="position: sticky; top: 16px; right: 16px; float: right; background: white; border: none; font-size: 28px; width: 40px; height: 40px; border-radius: 30px; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.1); z-index: 10;">✕</button>
+        <div style="padding: 40px 48px 48px; clear: both;">
+            <h2 style="font-size: 32px; font-weight: 700; color: #0066cc; margin-bottom: 24px;">董事长致辞</h2>
+            <p style="margin-bottom: 20px; line-height: 1.8; color: #0066cc; font-size: 16px; font-weight: 500;">"持续创新共享，改善人类呼吸命运共同体"是远致集团承载的第一社会责任。</p>
+            <p style="margin-bottom: 20px; color: #1d1d1f; line-height: 1.8; text-indent: 2em;">2001年第一次创业启程，携团队经十年磨砺，打造出国内第一家高温滤料上市企业三维丝。凭借着对节能环保领域的热爱与追求，搭乘2016年"绿水青山就是金山银山"的时代航船，再一次披荆斩棘，创立远致集团，开启了工业烟气环境综合治理的新篇章。</p>
+            <p style="margin-bottom: 20px; color: #1d1d1f; line-height: 1.8; text-indent: 2em;">再次创业更加聚焦技术研发，以高起点迈入新征程。众所周知，技术实力是企业获得市场认可、不断发展壮大的关键，为保证技术领先并具有持续创新发展力，专设立"节能环保研究院"，致力于工业烟气治理全产业链技术、高温过滤技术、在高温过滤技术基础上的烟气一体化处理技术、基于节能设计烟气治理新材料技术等多方向研发。同时，注重校企联合，先后与武汉理工大学、福州大学、浙江大学等知名院校展开深度合作。在工业烟气污染防治领域以"节能环保的有机统一"为核心进行了全产业链战略布局，构建了烟气治理设计工程服务平台和工业烟气治理节能新材料平台。</p>
+            <p style="margin-bottom: 20px; color: #1d1d1f; line-height: 1.8; text-indent: 2em;">在国家低碳、节能、环保一体化的大战略背景下，远致集团布局新能源、水泥、玻璃、钢铁、焦化、煤化工等领域市场，在工业烟气治理各细分领域被行业寄予厚望。秉持以客户为中心，以质量为保障的服务理念，构建了与利益相关方携手共进、和谐发展的命运共同体，也深刻呈现了"创新、共享、行以致远"的核心价值观。远致集团将继续乘风破浪、加快步伐、不畏挑战、未来可期。</p>
+            <div style="background: linear-gradient(135deg, #f0f4fa, #e8e8ed); padding: 20px; border-radius: 12px; text-align: center; color: #0066cc; margin: 28px 0; font-weight: 500;">愿与各界朋友真诚合作，领航蓝天低碳计划，共享企业绿色发展，一起拥抱更加美好的未来！</div>
+            <div style="text-align: right; margin-top: 32px;">
+                <div style="color: #8e8e93; font-size: 14px;">董事长</div>
+                <div style="font-size: 28px; font-weight: 700; color: #1d1d1f; margin-top: 4px;">罗祥波</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 轮播功能
+    const track = document.getElementById('carouselTrack');
+    const cards = document.querySelectorAll('.carousel-card');
+    const dotsContainer = document.getElementById('carouselDots');
+    let currentIndex = 0;
+    let autoInterval;
+
+    function updateCarousel() {
+        const cardWidth = cards[0]?.offsetWidth + 20 || 300;
+        track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+        document.querySelectorAll('.dot').forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentIndex);
+        });
+    }
+
+    function createDots() {
+        for (let i = 0; i < cards.length; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (i === 0) dot.classList.add('active');
+            dot.onclick = () => {
+                currentIndex = i;
+                updateCarousel();
+                resetAutoPlay();
+            };
+            dotsContainer.appendChild(dot);
+        }
+    }
+
+    function autoPlay() {
+        autoInterval = setInterval(() => {
+            currentIndex = (currentIndex + 1) % cards.length;
+            updateCarousel();
+        }, 4000);
+    }
+
+    function resetAutoPlay() {
+        clearInterval(autoInterval);
+        autoPlay();
+    }
+
+    createDots();
+    autoPlay();
+    window.addEventListener('resize', updateCarousel);
+
+    // 模态框控制
+    let currentModal = null;
+
+    function showDetail(type) {
+        const details = {
+            // 企业介绍
+            mission: `
+                <h3>企业使命</h3>
+                <p>用核心材料技术推动技术革新，实现节能与环保的有机统一，解决环保问题的同时为客户创造价值。</p>
+                <p>远致集团致力于通过持续的技术创新，为客户提供更高效、更节能的环保解决方案。</p>
+            `,
+            vision: `
+                <h3>企业愿景</h3>
+                <p>致力于成为掌握核心技术的国际知名节能环保企业。</p>
+                <p>远致集团将通过技术+创新+产业的协同发展模式，不断向产业链上下游延伸，在能源环保一体化的背景下，形成方案设计、工程建设、新材料技术研发和降碳节能环保一体化技术推广全产业链覆盖的发展布局。</p>
+            `,
+            values: `
+                <h3>核心价值观</h3>
+                <p><strong>创新共享 · 行以致远</strong></p>
+                <p>远致集团以开放的心态拥抱创新，与合作伙伴共享发展成果，携手走向更远的未来。秉持以客户为中心，以质量为保障的服务理念，构建了与利益相关方携手共进、和谐发展的命运共同体。</p>
+            `,
+
+            // 综合实力
+            leading: `
+                <h3>技术领军企业</h3>
+                <p>截至2024年中，公司已申请各类专利技术127项，其中已授权专利技术93项。</p>
+                <p>成为烟气治理领域细分行业的技术领军企业。</p>
+            `,
+            innovation: `
+                <h3>产学研合作</h3>
+                <p>远致集团联合以下知名院校展开深度合作：</p>
+                <ul>
+                    <li>武汉理工大学（合作成立武汉理工节能环保技术研究中心）</li>
+                    <li>福州大学</li>
+                    <li>浙江大学</li>
+                </ul>
+            `,
+            development: `
+                <h3>发展路径</h3>
+                <p>走技术材料装备创新型、低碳节能集约型发展之路，促进中国工业烟气治理行业整体技术水平的提升。</p>
+            `,
+
+            // 运营业务
+            operation_management: `
+                <h3>管理团队</h3>
+                <p>公司运营中心负责对运营业务进行总体管理，下设：</p>
+                <ul>
+                    <li>项目管理部</li>
+                    <li>计划经营部</li>
+                    <li>生产技术部</li>
+                </ul>
+                <p>专业配置齐全。管理团队成员均具有十年以上的环保运营项目管理经验和专业能力，具有丰富的1000MW、600MW、300MW级机组环保运维工作经历，能够为项目提供规范高效管理和专业技术指导。</p>
+            `,
+            operation_safety: `
+                <h3>安健环管理</h3>
+                <ul>
+                    <li>公司拥有安全生产许可证</li>
+                    <li>三级安健环管理体系</li>
+                    <li>安全管理职责明晰，体系健全</li>
+                    <li>运营中心和项目部都配有专职安健环管理人员</li>
+                    <li>足额安措、技措专项资金拨付，保障各项措施有效落实</li>
+                    <li>员工定期职业健康检查与培训</li>
+                    <li>应急预案与定期演练</li>
+                </ul>
+            `,
+
+            // 技术荣誉
+            scrhonor1: `
+                <h3>入选国家先进污染防治技术目录</h3>
+                <p>入选2021年《国家先进污染防治技术目录》，被评为示范技术。</p>
+            `,
+            scrhonor2: `
+                <h3>福建省首台（套）重大技术装备</h3>
+                <p>入选《福建省首台（套）重大技术装备推广应用指导目录(2023年)》。</p>
+            `,
+            scrhonor3: `
+                <h3>福建省生态环境治理设备名录</h3>
+                <p>入选《2023年福建省生态环境治理设备（产品）名录》。</p>
+            `,
+
+            // 技术参数
+            tech_advantage: `
+                <h3 style="color: #0066cc; margin-bottom: 20px;"> 系统优势</h3>
+                <ul style="line-height: 2; font-size: 15px;">
+                    <li>金属滤袋使用寿命8-10年，可回收无固废</li>
+                    <li>占地面积减少53%</li>
+                    <li>使用数量减少43%</li>
+                    <li>催化剂用量降低60%</li>
+                    <li>催化剂使用寿命延长一倍</li>
+                </ul>
+            `,
+            tech_performance: `
+                <h3 style="color: #0066cc; margin-bottom: 20px;">📊 运行效果</h3>
+                <table class="data-table" style="width: 100%; max-width: 600px;">
+                    <tr><th>参数</th><th>数值</th></tr>
+                    <tr><td>SCR系统温降</td><td>小于2℃</td></tr>
+                    <tr><td>系统增加电耗</td><td>小于2.45kwh/t.cl</td></tr>
+                    <tr><td>综合运行</td><td>平稳可靠</td></tr>
+                </table>
+            `,
+            tech_emission: `
+                <h3 style="color: #0066cc; margin-bottom: 20px;"> 排放指标</h3>
+                <table class="data-table" style="width: 100%; max-width: 600px;">
+                    <tr><th>污染物</th><th>排放指标</th></tr>
+                    <tr><td>出口粉尘浓度</td><td>＜10mg/Nm³</td></tr>
+                    <tr><td>出口NOx浓度</td><td>＜50mg/Nm³</td></tr>
+                    <tr><td>氨逃逸</td><td>＜5mg/Nm³</td></tr>
+                </table>
+            `,
+
+            // 产品详情
+            xinmo: `
+                <h3>鑫膜®类高熵金属滤袋</h3>
+                <p>远致集团通过研发创新和技术升级，创造性的研发出了高效、低阻、易清灰的鑫膜®类高熵多孔金属微纳膜。将微米级金属粉末与金属丝网复合，采用固相粒子烧结原理制备的复合结构多孔金属膜分离材料。</p>
+                <div style="margin: 20px 0; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.1);">
+                    <img src="slides-images/鑫膜高熵多孔.png" alt="鑫膜®高熵多孔金属微纳膜结构" style="width: 100%; height: auto; display: block;">
+                </div>
+                <h4>结构设计</h4>
+                <p>采用非对称梯级孔结构设计，形成由微纳膜层、过渡层、骨架层和透气层组成连续梯度层结构。</p>
+                <h4>性能优势</h4>
+                <table class="data-table">
+                    <tr><th>指标</th><th>数值</th></tr>
+                    <tr><td>孔径</td><td>＜1μm</td></tr>
+                    <tr><td>透气量提升</td><td>30%以上</td></tr>
+                    <tr><td>残余阻力降低</td><td>50%</td></tr>
+                    <tr><td>清灰周期延长</td><td>3-7倍</td></tr>
+                    <tr><td>过滤效率</td><td>99.999%</td></tr>
+                    <tr><td>最高使用温度</td><td>800℃</td></tr>
+                </table>
+            `,
+            metal_cata: `
+                <h3>鑫膜®金属膜催化滤袋</h3>
+                <p>远致集团自主主导研发的基于类高熵多孔金属微纳膜材料，结合脱硝催化剂制成原理形成的一种催化过滤一体膜新材料产品。</p>
+                <h4>核心优势</h4>
+                <table class="data-table">
+                    <tr><th>性能指标</th><th>参数</th></tr>
+                    <tr><td>温度窗口</td><td>260~400℃</td></tr>
+                    <tr><td>袋区阻力</td><td>＜600Pa</td></tr>
+                    <tr><td>粉尘拦截效率</td><td>99.999%</td></tr>
+                    <tr><td>脱硝效率</td><td>≥98%</td></tr>
+                    <tr><td>耐硫性</td><td>≤1500mg/Nm³</td></tr>
+                    <tr><td>耐水性</td><td>≤20%</td></tr>
+                </table>
+            `,
+            angels: `
+                <h3>安及赛®节能减碳滤料系列</h3>
+                <p>厦门格锐特环保科技有限公司自主研发的新一代除尘材料——高技术除尘材料。是指除具有过滤的核心功能外，同时具有节能减碳、环保闭环、协同耦合至少其中一种以上功能的滤料。</p>
+                <h4>超净排放效果</h4>
+                <ul>
+                    <li>正常工况下粉尘排放＜5mg/Nm³</li>
+                    <li>可节能20%-50%</li>
+                    <li>提升产能10%-30%</li>
+                    <li>滤袋寿命长减少投资10%-20%</li>
+                </ul>
+                <h4>山东某锅炉项目案例数据</h4>
+                <table class="data-table">
+                    <tr><th>指标</th><th>换袋前</th><th>换袋后</th></tr>
+                    <tr><td>出口粉尘</td><td>＞20mg/Nm³</td><td>4.16mg/Nm³</td></tr>
+                    <tr><td>运行压差</td><td>700Pa</td><td>400Pa</td></tr>
+                    <tr><td>项目节电</td><td>-</td><td>143335元/年</td></tr>
+                    <tr><td>CO₂减排</td><td>-</td><td>188吨/年</td></tr>
+                </table>
+            `,
+            lvbijing: `
+                <h3>滤必净™协同耦合型（功能型）滤料</h3>
+                <p>除具备过滤核心功能外，还兼具催化脱硝、脱硫、脱二噁英等其中至少一种功能的滤料。</p>
+                <h4>核心优势</h4>
+                <ul>
+                    <li>一条滤袋，多种功能</li>
+                    <li>低成本、短流程、安全可靠</li>
+                    <li>脱硝效率达70%~90%</li>
+                    <li>脱除二噁英效率最高可达97%</li>
+                </ul>
+                <h4>发明专利</h4>
+                <p>一步原位合成法制备二元脱硝抗硫催化剂负载滤料的方法</p>
+                <p>专利号：ZL 2016 1 1125918.4</p>
+                <h4>水泥窑尾中试数据</h4>
+                <table class="data-table">
+                    <tr><th>入口烟温</th><th>入口NOx</th><th>脱硝效率</th></tr>
+                    <tr><td>180℃</td><td>300mg/Nm³</td><td>84%</td></tr>
+                    <tr><td>190℃</td><td>389mg/Nm³</td><td>92.55%</td></tr>
+                    <tr><td>200℃</td><td>305mg/Nm³</td><td>91.5%</td></tr>
+                </table>
+            `,
+            p32: `
+                <h3>P32®全能型滤袋</h3>
+                <p>P32®纤维属于聚芳砜类(Polyarylsulfone，PASF)的同系物。由于其在分子链中引入强极性的砜基（-SO₂-），使其成为非结晶性聚合物，具有优良的力学、电学性能、尺寸稳定性以及耐化学腐蚀性、阻燃性等。</p>
+                <h4>山西某水泥窑尾除尘系统数据（2023年1月投运）</h4>
+                <table class="data-table">
+                    <tr><th>指标</th><th>更换前</th><th>更换后</th><th>效果</th></tr>
+                    <tr><td>运行阻力</td><td>700-1050Pa</td><td>300-800Pa</td><td>下降37%</td></tr>
+                    <tr><td>颗粒物浓度</td><td>14.4mg/Nm³</td><td>0.2mg/Nm³</td><td>达超净排放</td></tr>
+                    <tr><td>年节省电费</td><td>-</td><td>20万元</td><td>-</td></tr>
+                    <tr><td>寿命期内节省</td><td>-</td><td>80万元</td><td>按4年</td></tr>
+                </table>
+            `,
+            ceramic: `
+                <h3>陶瓷纤维滤管系列</h3>
+                <p>以高温陶瓷纤维滤管为基材，通过将纳米级SCR催化活性组分以特定形式均匀涂覆于整支滤管之上，形成具备外表面除尘、筒壁内部脱硝的复合能力的产品。</p>
+                <h4>性能特点</h4>
+                <ul>
+                    <li>高温除尘滤管可在750℃高温连续运行</li>
+                    <li>使用寿命长达5年以上</li>
+                    <li>脱硝效率可达到95%以上</li>
+                    <li>二噁英分解效率可达99%以上</li>
+                </ul>
+                <h4>运行效果</h4>
+                <table class="data-table">
+                    <tr><th>参数</th><th>数值</th></tr>
+                    <tr><td>仓室压差</td><td>从3900Pa降至小于950Pa</td></tr>
+                    <tr><td>出口粉尘浓度</td><td>达到5mg/Nm³以下</td></tr>
+                </table>
+            `,
+
+            // 新材料平台对比
+            xinmo_compare: `
+                <h3>各厂家金属滤料性能对比表</h3>
+                <table class="data-table">
+                    <tr>
+                        <th>测试项目</th>
+                        <th>金属纤维毡</th>
+                        <th>其它金属粉末毡</th>
+                        <th>鑫膜®</th>
+                    </tr>
+                    <tr>
+                        <td>透气量(L/dm²/min)</td>
+                        <td>65</td>
+                        <td>20</td>
+                        <td>32</td>
+                    </tr>
+                    <tr>
+                        <td>初始阻力(Pa)</td>
+                        <td>80</td>
+                        <td>210</td>
+                        <td>223</td>
+                    </tr>
+                    <tr>
+                        <td>残余阻力(Pa)</td>
+                        <td>745</td>
+                        <td>841</td>
+                        <td>429</td>
+                    </tr>
+                    <tr>
+                        <td>粉尘剥离率(%)</td>
+                        <td>28</td>
+                        <td>18</td>
+                        <td>73</td>
+                    </tr>
+                    <tr>
+                        <td>第一个清灰周期(s)</td>
+                        <td>559</td>
+                        <td>725</td>
+                        <td>599</td>
+                    </tr>
+                    <tr>
+                        <td>最后一个清灰周期(s)</td>
+                        <td>33</td>
+                        <td>166</td>
+                        <td>504</td>
+                    </tr>
+                    <tr>
+                        <td>过滤效率(%)</td>
+                        <td>99.983</td>
+                        <td>99.995</td>
+                        <td>99.999</td>
+                    </tr>
+                </table>
+            `,
+            p32_compare: `
+                <h3>全能型P32®滤料与常规滤料的常规性能对比</h3>
+                <table class="data-table">
+                    <tr>
+                        <th>项目</th>
+                        <th>PPS混纺(1#)</th>
+                        <th>P84复合(2#)</th>
+                        <th>芳纶(3#)</th>
+                        <th>P32®(4#)</th>
+                        <th>PTFE(5#)</th>
+                    </tr>
+                    <tr>
+                        <td>克重(g/m²)</td>
+                        <td>650</td>
+                        <td>702</td>
+                        <td>550</td>
+                        <td>600</td>
+                        <td>800</td>
+                    </tr>
+                    <tr>
+                        <td>厚度(mm)</td>
+                        <td>1.65</td>
+                        <td>1.58</td>
+                        <td>2.35</td>
+                        <td>1.6</td>
+                        <td>1.3</td>
+                    </tr>
+                    <tr>
+                        <td>透气量(L/dm²·min)</td>
+                        <td>30</td>
+                        <td>25</td>
+                        <td>28</td>
+                        <td>55</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td>断裂强力横向(N)</td>
+                        <td>≥1000</td>
+                        <td>700</td>
+                        <td>≥1200</td>
+                        <td>≥850</td>
+                        <td>≥800</td>
+                    </tr>
+                    <tr>
+                        <td>断裂强力纵向(N)</td>
+                        <td>≥800</td>
+                        <td>800</td>
+                        <td>≥900</td>
+                        <td>≥850</td>
+                        <td>≥700</td>
+                    </tr>
+                </table>
+            `,
+            catalyst_data: `
+                <h3>SCR脱硝催化剂危废焚烧行业应用数据</h3>
+                <p>2018年7月投运</p>
+                <table class="data-table">
+                    <tr><th>序号</th><th>项目</th><th>单位</th><th>数值</th><th>备注</th></tr>
+                    <tr><td>1</td><td>烟气量</td><td>Nm³/h</td><td>60950</td><td>100%MCR</td></tr>
+                    <tr><td>2</td><td>烟气温度</td><td>℃</td><td>70</td><td>MCR</td></tr>
+                    <tr><td>3</td><td>CO₂</td><td>Vol%</td><td>5.71</td><td>Wet</td></tr>
+                    <tr><td>4</td><td>O₂</td><td>Vol%</td><td>11.0</td><td>Wet</td></tr>
+                    <tr><td>5</td><td>N₂</td><td>Vol%</td><td>54.3</td><td>Wet</td></tr>
+                    <tr><td>6</td><td>H₂O</td><td>Vol%</td><td>14.0</td><td>-</td></tr>
+                    <tr><td>7</td><td>粉尘含量</td><td>mg/Nm³</td><td>＜10</td><td>-</td></tr>
+                    <tr><td>8</td><td>氮氧化物含量(NO)</td><td>mg/Nm³</td><td>≤200</td><td>-</td></tr>
+                    <tr><td>9</td><td>二氧化硫含量(SO₂)</td><td>mg/Nm³</td><td>≤50</td><td>-</td></tr>
+                    <tr><td>10</td><td>氯化氢含量(HCl)</td><td>mg/Nm³</td><td>≤10</td><td>-</td></tr>
+                </table>
+                <p style="font-size: 12px; color: #8e8e93; margin-top: 12px;">* 以下参数为湿法脱酸出口条件，进入SCR前还需将烟气升温至200℃，排放要求需控制在50mg/Nm³以下</p>
+            `,
+
+            // 荣誉奖项
+            award1: `
+                <h3>2021年水泥行业科技发展最佳贡献奖</h3>
+                <p>远致集团通过核心技术方面的持续投入，展现硬核科技实力，经过中国水泥协会层层筛选，荣获"2021年水泥行业科技发展最佳贡献奖"。</p>
+            `,
+            award2: `
+                <h3>建筑材料科学技术奖技术进步二等奖</h3>
+                <p>中国建筑材料联合会、中国硅酸盐学会正式批准公示的2021年度建筑材料科学技术奖获奖项目中，"远致高温低尘SCR脱硝一体化技术"在被评选出的35项技术进步类奖项中，荣获技术进步类二等奖。</p>
+            `,
+            award3: `
+                <h3>全国建材机械行业科技二等奖</h3>
+                <p>远致集团凭"高温低尘SCR脱硝一体化技术与装备的创新研发"，获得各行业充分认可，斩获2021年度全国建材机械行业科技二等奖。</p>
+            `,
+            award4: `
+                <h3>2021年度水泥行业优秀供应商</h3>
+                <p>厦门格锐特环保科技有限公司作为远致集团旗下的科技创新材料企业，自主研发生产的节能低碳滤袋产品，在各行业被广泛应用推广，荣获"2021年度水泥行业优秀供应商"称号。</p>
+            `
+        };
+
+        const content = details[type] || '<p>更多详情请查看远致集团官方宣传册</p>';
+        showModal(content);
+    }
+
+    function showProject(project) {
+        const projects = {
+            henan: `
+                <h3>河南某水泥项目</h3>
+                <p><strong>投运时间：</strong>2019年11月</p>
+                <p><strong>项目性质：</strong>高温低尘SCR脱硝一体化技术项目首台套应用</p>
+                <h4>实际运行参数</h4>
+                <table class="data-table">
+                    <tr><th>参数</th><th>数值</th></tr>
+                    <tr><td>标况烟气量</td><td>146000Nm³/h</td></tr>
+                    <tr><td>烟气温度</td><td>320℃</td></tr>
+                    <tr><td>入口粉尘浓度</td><td>100g/Nm³</td></tr>
+                    <tr><td>入口NOx浓度</td><td>1000mg/Nm³</td></tr>
+                    <tr><td>出口粉尘浓度</td><td>＜10mg/Nm³</td></tr>
+                    <tr><td>出口NOx浓度</td><td>＜50mg/Nm³</td></tr>
+                    <tr><td>氨逃逸</td><td>＜5mg/Nm³</td></tr>
+                </table>
+                <h4>运行效果</h4>
+                <ul>
+                    <li>喷氨量降低80%，已稳定运行五年</li>
+                    <li>鑫膜®类高熵褶皱金属滤袋的首台套应用</li>
+                    <li>氨水耗量小于2.5kg/t.cl</li>
+                    <li>系统阻力小于800Pa</li>
+                    <li>SCR系统温降小于2℃</li>
+                    <li>系统增加电耗小于2.45kwh/t.cl</li>
+                </ul>
+            `,
+            shanxi: `
+                <h3>山西某水泥5000吨项目</h3>
+                <p><strong>投运时间：</strong>2021年11月</p>
+                <p><strong>项目性质：</strong>鑫膜®类高熵金属滤袋首台套应用</p>
+                <h4>实际运行参数</h4>
+                <table class="data-table">
+                    <tr><th>参数</th><th>数值</th></tr>
+                    <tr><td>标况烟气量</td><td>380000Nm³/h（工况820000Nm³/h）</td></tr>
+                    <tr><td>烟气温度</td><td>310℃</td></tr>
+                    <tr><td>入口粉尘浓度</td><td>100g/Nm³</td></tr>
+                    <tr><td>出口粉尘浓度</td><td>10mg/Nm³</td></tr>
+                    <tr><td>入口SO₂浓度</td><td>200mg/Nm³</td></tr>
+                    <tr><td>出口SO₂浓度</td><td>20mg/Nm³</td></tr>
+                    <tr><td>入口NOx浓度</td><td>500mg/Nm³</td></tr>
+                    <tr><td>出口NOx浓度</td><td>50mg/Nm³</td></tr>
+                    <tr><td>氨逃逸</td><td>2.5mg/Nm³</td></tr>
+                </table>
+            `,
+            shandong: `
+                <h3>山东某锅炉烟气除尘项目</h3>
+                <p><strong>投运时间：</strong>2021年10月</p>
+                <p><strong>滤袋型号：</strong>EGS-PPS620F2 / 规格160*6550mm / 数量1325条</p>
+                <h4>运行数据对比</h4>
+                <table class="data-table">
+                    <tr><th>指标</th><th>换袋前</th><th>换袋后</th></tr>
+                    <tr><td>出口粉尘浓度</td><td>＞20mg/Nm³</td><td>第一次7.3mg/Nm³ / 第二次4.16mg/Nm³</td></tr>
+                    <tr><td>运行压差</td><td>700Pa</td><td>400Pa</td></tr>
+                    <tr><td>项目节电</td><td>-</td><td>143335元/年</td></tr>
+                    <tr><td>CO₂减排</td><td>-</td><td>188吨/年</td></tr>
+                    <tr><td>粉尘减排</td><td>-</td><td>120吨/年</td></tr>
+                </table>
+            `,
+            xinjiang: `
+                <h3>新疆某钢铁项目</h3>
+                <p><strong>投运时间：</strong>2022年12月</p>
+                <h4>运行数据对比</h4>
+                <table class="data-table">
+                    <tr><th>指标</th><th>换袋前</th><th>换袋后</th></tr>
+                    <tr><td>运行压差</td><td>4901Pa</td><td>3973Pa</td></tr>
+                    <tr><td>引风机电流</td><td>14.0A</td><td>10.6A</td></tr>
+                    <tr><td>项目节电</td><td>-</td><td>163200元/年</td></tr>
+                    <tr><td>CO₂减排</td><td>-</td><td>232吨/年</td></tr>
+                    <tr><td>单条滤袋节电</td><td>-</td><td>102元/条/年</td></tr>
+                </table>
+            `,
+            sichuan: `
+                <h3>四川某钢厂AOD袋式除尘器项目</h3>
+                <p><strong>投运时间：</strong>2023年12月</p>
+                <p><strong>工艺路线：</strong>高温高效消石灰干法脱硫 + 高温除尘 + 预留脱硝</p>
+                <h4>设计参数与实际运行对比</h4>
+                <table class="data-table">
+                    <tr><th>项目</th><th>单位</th><th>设计参数</th><th>实际运行</th></tr>
+                    <tr><td>平均工况条件下烟气量</td><td>Nm³/h</td><td>≤55000</td><td>31120~66130</td></tr>
+                    <tr><td>进系统烟气温度</td><td>℃</td><td>350~450</td><td>275~396</td></tr>
+                    <tr><td>进系统烟气中SO₂(8%O₂)</td><td>mg/Nm³,dry</td><td>≤500</td><td>150~330</td></tr>
+                    <tr><td>外排烟气中SO₂(8%O₂)</td><td>mg/Nm³,dry</td><td>≤50</td><td>7~33</td></tr>
+                    <tr><td>外排烟气中颗粒物</td><td>mg/Nm³</td><td>≤10</td><td>1~3</td></tr>
+                </table>
+            `,
+            fujian: `
+                <h3>福建某医疗废物除尘系统</h3>
+                <p><strong>投运时间：</strong>2024年1月</p>
+                <p><strong>滤袋型号：</strong>EGS-P32®</p>
+                <h4>运行效果</h4>
+                <table class="data-table">
+                    <tr><th>指标</th><th>更换前</th><th>更换后</th><th>效果</th></tr>
+                    <tr><td>运行阻力</td><td>700-1050Pa</td><td>300-800Pa</td><td>下降37%</td></tr>
+                    <tr><td>颗粒物浓度</td><td>14.4mg/Nm³</td><td>0.2mg/Nm³</td><td>达超净排放</td></tr>
+                    <tr><td>年节省电费</td><td>-</td><td>20万元</td><td>按电费0.6元/kWh</td></tr>
+                    <tr><td>寿命期内节省</td><td>-</td><td>80万元</td><td>按4年</td></tr>
+                </table>
+            `
+        };
+        const content = projects[project] || '<p>更多项目详情请查看远致集团官方宣传册</p>';
+        showModal(content);
+    }
+
+    function showModal(content) {
+        if (currentModal) {
+            currentModal.remove();
+        }
+
+        const modalOverlay = document.createElement('div');
+        modalOverlay.className = 'modal-overlay';
+        modalOverlay.innerHTML = `
+            <div class="modal-card">
+                <button class="close-modal-btn">✕</button>
+                <div class="modal-card-content">${content}</div>
+            </div>
+        `;
+
+        document.body.appendChild(modalOverlay);
+        currentModal = modalOverlay;
+
+        requestAnimationFrame(() => {
+            modalOverlay.classList.add('active');
+        });
+
+        const closeBtn = modalOverlay.querySelector('.close-modal-btn');
+        closeBtn.onclick = (e) => {
+            e.stopPropagation();
+            modalOverlay.classList.remove('active');
+            setTimeout(() => {
+                modalOverlay.remove();
+                currentModal = null;
+            }, 250);
+        };
+
+        modalOverlay.onclick = (e) => {
+            if (e.target === modalOverlay) {
+                modalOverlay.classList.remove('active');
+                setTimeout(() => {
+                    modalOverlay.remove();
+                    currentModal = null;
+                }, 250);
+            }
+        };
+    }
+
+    // 董事长致辞模态框
+    function openSpeechModal() {
+        const modal = document.getElementById('speechModal');
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeSpeechModal() {
+        const modal = document.getElementById('speechModal');
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    // 导航高亮
+    window.addEventListener('scroll', () => {
+        const sections = document.querySelectorAll('.section, #hero');
+        let current = '';
+        sections.forEach(section => {
+            if (pageYOffset >= section.offsetTop - 120) {
+                current = section.getAttribute('id') || '';
+            }
+        });
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
+    });
+
+    // 技术卡片详情展开/收起功能
+    let currentTechDetail = null;
+
+    function toggleTechDetail(type) {
+        const panel = document.getElementById('techDetailPanel');
+        const content = document.getElementById('techDetailContent');
+
+        const details = {
+            tech_advantage: `
+                <h3 style="color: #0066cc; margin-bottom: 20px;"> 系统优势</h3>
+                <ul style="line-height: 2; font-size: 15px;">
+                    <li>金属滤袋使用寿命8-10年，可回收无固废</li>
+                    <li>占地面积减少53%</li>
+                    <li>使用数量减少43%</li>
+                    <li>催化剂用量降低60%</li>
+                    <li>催化剂使用寿命延长一倍</li>
+                </ul>
+            `,
+            tech_performance: `
+                <h3 style="color: #0066cc; margin-bottom: 20px;">📊 运行效果</h3>
+                <table class="data-table" style="width: 100%; max-width: 600px;">
+                    <tr><th>参数</th><th>数值</th></tr>
+                    <tr><td>SCR系统温降</td><td>小于2℃</td></tr>
+                    <tr><td>系统增加电耗</td><td>小于2.45kwh/t.cl</td></tr>
+                    <tr><td>综合运行</td><td>平稳可靠</td></tr>
+                </table>
+            `,
+            tech_emission: `
+                <h3 style="color: #0066cc; margin-bottom: 20px;"> 排放指标</h3>
+                <table class="data-table" style="width: 100%; max-width: 600px;">
+                    <tr><th>污染物</th><th>排放指标</th></tr>
+                    <tr><td>出口粉尘浓度</td><td>＜10mg/Nm³</td></tr>
+                    <tr><td>出口NOx浓度</td><td>＜50mg/Nm³</td></tr>
+                    <tr><td>氨逃逸</td><td>＜5mg/Nm³</td></tr>
+                </table>
+            `
+        };
+
+        // 重置所有箭头文字
+        ['tech_advantage', 'tech_performance', 'tech_emission'].forEach(t => {
+            const arrow = document.getElementById(`arrow-${t}`);
+            if (arrow) {
+                if (t === 'tech_advantage') arrow.textContent = '查看技术参数 →';
+                if (t === 'tech_performance') arrow.textContent = '查看运行数据 →';
+                if (t === 'tech_emission') arrow.textContent = '查看排放数据 →';
+            }
+        });
+
+        // 如果点击的是当前已展开的详情，则收起
+        if (currentTechDetail === type) {
+            panel.style.display = 'none';
+            currentTechDetail = null;
+            return;
+        }
+
+        // 展开新的详情
+        content.innerHTML = details[type] || '<p>暂无详情</p>';
+        panel.style.display = 'block';
+        currentTechDetail = type;
+
+        // 更新当前卡片的箭头文字
+        const currentArrow = document.getElementById(`arrow-${type}`);
+        if (currentArrow) {
+            currentArrow.textContent = '收起详情 ↑';
+        }
+
+        // 滚动到详情区域
+        setTimeout(() => {
+            panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 50);
+    }
+</script>
+</body>
+</html>
